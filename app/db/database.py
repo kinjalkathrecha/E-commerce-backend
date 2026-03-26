@@ -3,8 +3,9 @@ from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker,declarative_base
 
-DATABASE_URL=os.getenv("DATABASE_URL")
+load_dotenv()
+DATABASE_URL=os.getenv("POSTGRES_URL")
 
 engine=create_engine(DATABASE_URL)
 SessionLocal=sessionmaker(bind=engine)
-base=declarative_base()
+Base=declarative_base()
