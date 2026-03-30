@@ -12,10 +12,8 @@ class Product(Base):
     discounted_price = Column(Float, nullable=True)
     stock_quantity = Column(Integer, default=0) 
     image_url = Column(String(500)) 
-    section_id = Column(Integer, ForeignKey("sections.id"), nullable=False)
-    brand_id = Column(Integer, ForeignKey("brands.id")) # <--- New link
-    
-    brand = relationship("Brand", back_populates="products")
+    section_id = Column(Integer,ForeignKey("sections.id"),nullable=True)
+    brand = Column(Text,nullable=False)  
     section = relationship("Section", back_populates="products")
     variants = relationship("ProductVariant", back_populates="product", cascade="all, delete")
     reviews = relationship("Review", back_populates="product")

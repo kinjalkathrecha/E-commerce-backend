@@ -36,8 +36,8 @@ class ProductBase(BaseModel):
     discounted_price: Optional[float] = None
     stock_quantity: int = 0
     image_url: Optional[str] = None
-    section_id: int
-    brand_id: Optional[int] = None
+    section_id : int
+    brand: str
 
 class ProductCreate(ProductBase):
     pass
@@ -50,7 +50,7 @@ class ProductUpdate(BaseModel):
     stock_quantity: Optional[int] = None
     image_url: Optional[str] = None
     section_id: Optional[int] = None
-    brand_id: Optional[int] = None
+    brand: Optional[str] = None
 
 class ProductResponse(ProductBase):
     id: int

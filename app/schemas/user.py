@@ -18,7 +18,6 @@ class UserBase(BaseModel):
     email: EmailStr
     full_name: Optional[str] = None
     is_active: bool = True
-    role_id: int
 
 class UserCreate(UserBase):
     password: str = Field(..., min_length=6, max_length=72)

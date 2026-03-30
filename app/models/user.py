@@ -41,9 +41,11 @@ class BulkInquiry(Base):
     additional_requirements = Column(Text, nullable=True)
     preferred_contact_datetime = Column(DateTime, nullable=False)
     product_id = Column(Integer, ForeignKey("products.id", ondelete="SET NULL"), nullable=True)
+    category_id = Column(Integer,ForeignKey("categories.id", ondelete="SET NULL"),nullable=True)
     inquiry_type = Column(String(50), nullable=False, default="General")
     created_at = Column(DateTime, default=datetime.utcnow)
-    selected_categories = relationship("Category", backref="bulk_inquiries")
+    product = relationship("Product", backref="bulk_inquiries")
+    category = relationship("Category", backref="bulk_inquiries")
 
 class Address(Base):
     __tablename__ = "addresses"
