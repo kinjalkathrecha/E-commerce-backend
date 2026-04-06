@@ -68,6 +68,9 @@ class PromoCode(Base):
     discount_percentage = Column(Numeric(5, 2))
     is_active = Column(Boolean, default=True)
     expiry_date = Column(DateTime)
+    seller_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=True) # Null for global admin promos
+
+    seller = relationship("User", backref="promo_codes")
 
 class TicketStatus(enum.Enum):
     PENDING = "pending"

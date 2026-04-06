@@ -91,6 +91,7 @@ class PromoCodeBase(BaseModel):
     discount_percentage: float
     is_active: bool = True
     expiry_date: Optional[datetime] = None
+    seller_id: Optional[int] = None
 
 class PromoCodeCreate(PromoCodeBase):
     pass
